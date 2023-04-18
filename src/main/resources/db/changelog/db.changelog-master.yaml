@@ -1,0 +1,56 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: ktsvilik
+      changes:
+        - createTable:
+            tableName: customer
+            columns:
+              - column:
+                  name: id
+                  type: binary(16)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+        - createTable:
+            tableName: topping
+            columns:
+              - column:
+                  name: id
+                  type: binary(16)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+        - createTable:
+            tableName: customer_topping
+            columns:
+              - column:
+                  name: customer_id
+                  type: binary(16)
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: customer_topping_pk
+                    foreignKeyName: customer_fk
+                    references: customer(id)
+                    nullable: false
+              - column:
+                  name: topping_id
+                  type: binary(16)
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: customer_topping_pk
+                    foreignKeyName: topping_fk
+                    references: topping(id)
+                    nullable: false

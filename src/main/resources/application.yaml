@@ -1,0 +1,19 @@
+spring:
+  h2:
+    console:
+      settings.trace: false
+      settings.web-allow-others: false
+  datasource:
+    url: jdbc:h2:file:./db/h2db
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+logging:
+  level:
+    com.ktsvilik.pizzeria: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
